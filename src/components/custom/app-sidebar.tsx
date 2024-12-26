@@ -1,33 +1,49 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, Home, Inbox, Search, Settings, Feather } from "lucide-react"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
 import { SidebarUser } from "./sidebar-user"
+import { group } from "console"
 
 const items = [
     {
-        title: "Home",
-        url: "#",
-        icon: Home,
+        groupLabel: "Public",
+        items: [
+            {
+                title: "Home",
+                url: "/",
+                icon: Home,
+            },
+            {
+                title: "Inbox",
+                url: "#",
+                icon: Inbox,
+            },
+            {
+                title: "Calendar",
+                url: "#",
+                icon: Calendar,
+            },
+            {
+                title: "Search",
+                url: "#",
+                icon: Search,
+            },
+            {
+                title: "Settings",
+                url: "#",
+                icon: Settings,
+            },
+        ]
     },
     {
-        title: "Inbox",
-        url: "#",
-        icon: Inbox,
-    },
-    {
-        title: "Calendar",
-        url: "#",
-        icon: Calendar,
-    },
-    {
-        title: "Search",
-        url: "#",
-        icon: Search,
-    },
-    {
-        title: "Settings",
-        url: "#",
-        icon: Settings,
-    },
+        groupLabel: "Blog",
+        items: [
+            {
+                title: "Blogs",
+                url: "/blogs",
+                icon: Feather,
+            },
+        ]
+    }
 ]
 
 const user = {
@@ -39,23 +55,27 @@ export default function AppSidebar() {
     return (
         <Sidebar collapsible="icon">
             <SidebarContent>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Public</SidebarGroupLabel>
-                    <SidebarGroupContent>
-                        <SidebarMenu>
-                            {items.map((item) => (
-                                <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
-                                        <a href={item.url}>
-                                            <item.icon />
-                                            <span>{item.title}</span>
-                                        </a>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
-                        </SidebarMenu>
-                    </SidebarGroupContent>
-                </SidebarGroup>
+                {
+                    items.map((group) => (
+                        <SidebarGroup key={group.groupLabel}>
+                            <SidebarGroupLabel>{group.groupLabel}</SidebarGroupLabel>
+                            <SidebarGroupContent>
+                                <SidebarMenu>
+                                    {group.items.map((item) => (
+                                        <SidebarMenuItem key={item.title}>
+                                            <SidebarMenuButton asChild>
+                                                <a href={item.url}>
+                                                    <item.icon />
+                                                    <span>{item.title}</span>
+                                                </a>
+                                            </SidebarMenuButton>
+                                        </SidebarMenuItem>
+                                    ))}
+                                </SidebarMenu>
+                            </SidebarGroupContent>
+                        </SidebarGroup>
+                    ))
+                }
             </SidebarContent>
             <SidebarFooter>
                 <SidebarUser user={user} />
