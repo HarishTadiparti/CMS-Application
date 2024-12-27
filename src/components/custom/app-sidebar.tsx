@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings, Feather } from "lucide-react"
+import { Calendar, Home, Inbox, Search, Settings, Feather, Plus } from "lucide-react"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
 import { SidebarUser } from "./sidebar-user"
 import { group } from "console"
@@ -35,7 +35,7 @@ const items = [
         ]
     },
     {
-        groupLabel: "Blog",
+        groupLabel: "CMS Collections",
         items: [
             {
                 title: "Blogs",
@@ -58,7 +58,10 @@ export default function AppSidebar() {
                 {
                     items.map((group) => (
                         <SidebarGroup key={group.groupLabel}>
-                            <SidebarGroupLabel>{group.groupLabel}</SidebarGroupLabel>
+                            <div className="relative group/item flex items-center justify-between hover:bg-secondary rounded-md">
+                                <SidebarGroupLabel>{group.groupLabel}</SidebarGroupLabel>
+                                <Plus className="mr-2 w-4 h-4 text-transparent group-hover/item:text-sidebar-foreground/60" />
+                            </div>
                             <SidebarGroupContent>
                                 <SidebarMenu>
                                     {group.items.map((item) => (
