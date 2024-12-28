@@ -1,24 +1,21 @@
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+'use client'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import CustomBreadcrumb from "@/components/custom/custom-breadcrumb"
-import { title } from "process"
 import { Badge } from "@/components/ui/badge"
-import { cn, stateVariants } from "@/lib/utils"
-import { Search } from "lucide-react"
+import { stateVariants } from "@/lib/utils"
+import { Plus, Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 
 export default function BlogsPage() {
+    const navigate = useRouter()
     const breadcrumbItems = [
         {
             name: "Blogs",
             link: "/blogs"
         }
     ]
-
-    const colorVariants: any = {
-        Initiated: 'bg-blue-600 hover:bg-blue-500 text-white',
-        red: 'bg-red-500 hover:bg-red-400 text-white',
-        yellow: 'bg-yellow-300 hover:bg-yellow-400 text-black',
-    }
 
     const tableData = [
         {
@@ -97,6 +94,10 @@ export default function BlogsPage() {
         <div className="space-y-3">
             <div className="px-4 py-3 flex items-center justify-between">
                 <CustomBreadcrumb items={breadcrumbItems} />
+            </div>
+            <div className="px-4 flex items-center justify-between">
+                <h1 className="text-xl">Blogs</h1>
+                <Button size='sm' onClick={() => navigate.push('/blogs/create-blog')}><Plus className="w-4 h-4" /> Create Blog</Button>
             </div>
             <div className="mx-4 border rounded-md">
                 <Table>
