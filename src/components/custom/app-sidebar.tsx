@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings, Feather, Plus } from "lucide-react"
+import { Calendar, Home, Inbox, Search, Settings, Database, Plus } from "lucide-react"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
 import { SidebarUser } from "./sidebar-user"
 import { group } from "console"
@@ -25,7 +25,7 @@ const items = [
             {
                 title: "Blogs",
                 url: "/blogs",
-                icon: Feather,
+                icon: Database,
             },
         ]
     }
