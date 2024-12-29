@@ -7,7 +7,7 @@ import { Plus, Search, Settings2 } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
-import { PageLayout, PageLayoutHeader } from "@/components/custom/page-layout"
+import { PageLayout, PageLayoutHeader, PageLayoutTitle } from "@/components/custom/page-layout"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 export default function BlogsPage() {
     const navigate = useRouter()
@@ -97,7 +97,7 @@ export default function BlogsPage() {
                 <CustomBreadcrumb items={breadcrumbItems} />
             </PageLayoutHeader>
             <div className="px-4 flex items-center justify-between">
-                <h1 className="text-lg font-semibold md:text-2xl">Blogs</h1>
+                <PageLayoutTitle>Blogs</PageLayoutTitle>
                 <Button size='sm' onClick={() => navigate.push('/blogs/create-blog')}><Plus className="w-4 h-4" /> Create Blog</Button>
             </div>
             <div className="px-4 flex items-center justify-between">

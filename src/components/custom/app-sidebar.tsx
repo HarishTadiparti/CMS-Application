@@ -1,7 +1,10 @@
+'use client'
+
 import { Calendar, Home, Inbox, Search, Settings, Database, Plus } from "lucide-react"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
 import { SidebarUser } from "./sidebar-user"
 import { group } from "console"
+import Link from "next/link"
 
 const items = [
     {
@@ -45,7 +48,9 @@ export default function AppSidebar() {
                         <SidebarGroup key={group.groupLabel}>
                             <div className="relative group/item flex items-center justify-between hover:bg-secondary rounded-md">
                                 <SidebarGroupLabel>{group.groupLabel}</SidebarGroupLabel>
-                                <Plus className="mr-2 w-4 h-4 text-transparent group-hover/item:text-sidebar-foreground/60" />
+                                <Link href="/create-cms">
+                                    <Plus className="mr-2 w-4 h-4 text-transparent group-hover/item:text-sidebar-foreground/60 cursor-pointer" />
+                                </Link>
                             </div>
                             <SidebarGroupContent>
                                 <SidebarMenu>
