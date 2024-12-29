@@ -3,12 +3,12 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import CustomBreadcrumb from "@/components/custom/custom-breadcrumb"
 import { Badge } from "@/components/ui/badge"
 import { stateVariants } from "@/lib/utils"
-import { Plus, Search } from "lucide-react"
+import { Plus, Search, Settings2 } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { PageLayout, PageLayoutHeader } from "@/components/custom/page-layout"
-
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 export default function BlogsPage() {
     const navigate = useRouter()
     const breadcrumbItems = [
@@ -97,8 +97,24 @@ export default function BlogsPage() {
                 <CustomBreadcrumb items={breadcrumbItems} />
             </PageLayoutHeader>
             <div className="px-4 flex items-center justify-between">
-                <h1 className="text-xl">Blogs</h1>
+                <h1 className="text-lg font-semibold md:text-2xl">Blogs</h1>
                 <Button size='sm' onClick={() => navigate.push('/blogs/create-blog')}><Plus className="w-4 h-4" /> Create Blog</Button>
+            </div>
+            <div className="px-4 flex items-center justify-between">
+                <div></div>
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button size='sm' variant='outline'><Settings2 className="w-4 h-4" /> View</Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                        <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>Profile</DropdownMenuItem>
+                        <DropdownMenuItem>Billing</DropdownMenuItem>
+                        <DropdownMenuItem>Team</DropdownMenuItem>
+                        <DropdownMenuItem>Subscription</DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
             </div>
             <div className="mx-4 border rounded-md">
                 <Table>
