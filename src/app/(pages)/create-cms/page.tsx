@@ -2,7 +2,6 @@
 import CustomBreadcrumb from "@/components/custom/custom-breadcrumb";
 import FormFieldComponent from "@/components/custom/formfield-component";
 import { PageLayoutHeader, PageLayoutTitle } from "@/components/custom/page-layout";
-import Stepper from "@/components/custom/stepper";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -53,9 +52,6 @@ export default function CreateCMSPage() {
                 <CustomBreadcrumb items={breadcrumbItems} />
             </PageLayoutHeader>
 
-            <div>
-                <Stepper steps={steps} />
-            </div>
             <div className="px-4 ">
                 <PageLayoutTitle className="text-xl font-semibold">Create CMS</PageLayoutTitle>
                 <Form {...form}>
