@@ -29,7 +29,7 @@ export default function RootLayout({
       <body>
         <AppSidebarProvider>
           <AppSidebar />
-          <main className="w-full overflow-x-hidden">
+          <main className="relative w-full h-screen overflow-x-hidden">
             {children}
           </main>
         </AppSidebarProvider>

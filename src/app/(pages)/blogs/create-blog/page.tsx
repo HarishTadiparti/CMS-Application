@@ -34,7 +34,7 @@ export default function CreateNewBlog() {
 
     return (
         <PageLayout>
-            <PageLayoutHeader>
+            <PageLayoutHeader className="sticky top-0 z-10 bg-white bg-opacity-5 backdrop-blur-md border-b border-input/40">
                 <CustomBreadcrumb items={breadcrumbItems} />
                 <div className="flex items-center gap-2">
                     <Button size='sm' variant='secondary'>Preview</Button>

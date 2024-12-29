@@ -4,12 +4,19 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import TiptapToolbar from './tiptab-toolbar'
-import Heading from '@tiptap/extension-heading'
-
+import TaskList from '@tiptap/extension-task-list'
+import TaskItem from '@tiptap/extension-task-item'
 
 const Tiptap = ({ content, onChange }: { content: string, onChange: (richText: string) => void }) => {
     const editor = useEditor({
-        extensions: [StarterKit.configure(), Underline],
+        autofocus: false,
+        extensions: [
+            StarterKit.configure(),
+            Underline,
+            TaskList,
+            TaskItem.configure({
+                nested: true,
+            }),],
         content: content,
         editorProps: {
             attributes: {
@@ -23,7 +30,9 @@ const Tiptap = ({ content, onChange }: { content: string, onChange: (richText: s
 
     return (
         <div className='space-y-2'>
-            <TiptapToolbar editor={editor} />
+            <div className='sticky top-16 z-10 bg-white shadow-sm'>
+                <TiptapToolbar editor={editor} />
+            </div>
             <EditorContent editor={editor} />
         </div>
     )
