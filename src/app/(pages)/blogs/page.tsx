@@ -92,69 +92,37 @@ export default function BlogsPage() {
     ]
 
     return (
-        <PageLayout>
-            <div className="px-4 flex items-center justify-between">
+        <PageLayout className="mx-4 mt-4">
+            <div className="flex items-center justify-between">
                 <PageLayoutTitle>Blogs</PageLayoutTitle>
-                <Button size='sm' onClick={() => navigate.push('/blogs/create-blog')}><Plus className="w-4 h-4" /> Create Blog</Button>
+                <div className="flex items-center gap-2">
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button size='sm' variant='outline'><Settings2 className="w-4 h-4" /> View</Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>Profile</DropdownMenuItem>
+                            <DropdownMenuItem>Billing</DropdownMenuItem>
+                            <DropdownMenuItem>Team</DropdownMenuItem>
+                            <DropdownMenuItem>Subscription</DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                    <Button size='sm' onClick={() => navigate.push('/blogs/create-blog')}><Plus className="w-4 h-4" /> Create Blog</Button>
+                </div>
             </div>
-            <div className="px-4 flex items-center justify-between">
-                <div></div>
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button size='sm' variant='outline'><Settings2 className="w-4 h-4" /> View</Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>Profile</DropdownMenuItem>
-                        <DropdownMenuItem>Billing</DropdownMenuItem>
-                        <DropdownMenuItem>Team</DropdownMenuItem>
-                        <DropdownMenuItem>Subscription</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            </div>
-            <div className="mx-4 border rounded-md">
+
+            <div className="border rounded-md">
                 <Table>
                     <TableHeader>
-                        <TableRow>
+                        <TableRow className="bg-muted/50">
                             <TableHead className="whitespace-nowrap">Title</TableHead>
                             {/* <TableHead>Image</TableHead> */}
                             <TableHead className="whitespace-nowrap">Category</TableHead>
                             <TableHead className="whitespace-nowrap">Slug</TableHead>
                             <TableHead className="whitespace-nowrap">Created Date</TableHead>
                             <TableHead className="whitespace-nowrap">State</TableHead>
-                        </TableRow>
-                        <TableRow>
-                            <TableHead>
-                                <div className="flex items-center">
-                                    <Search className="mb-[1px] w-4 h-4" />
-                                    <Input className="px-1 border-none shadow-none focus-visible:ring-0" placeholder="Search Title..." />
-                                </div>
-                            </TableHead>
-                            <TableHead>
-                                <div className="flex items-center">
-                                    <Search className="mb-[1px] w-4 h-4" />
-                                    <Input className="px-1 border-none shadow-none focus-visible:ring-0" placeholder="Search Category..." />
-                                </div>
-                            </TableHead>
-                            <TableHead>
-                                <div className="flex items-center">
-                                    <Search className="mb-[1px] w-4 h-4" />
-                                    <Input className="px-1 border-none shadow-none focus-visible:ring-0" placeholder="Search Slug..." />
-                                </div>
-                            </TableHead>
-                            <TableHead>
-                                <div className="flex items-center">
-                                    <Search className="mb-[1px] w-4 h-4" />
-                                    <Input className="px-1 border-none shadow-none focus-visible:ring-0" placeholder="Search Created Date..." />
-                                </div>
-                            </TableHead>
-                            <TableHead className="overflow-hidden">
-                                <div className="flex items-center overflow-hidden">
-                                    <Search className="mb-[1px] w-4 h-4" />
-                                    <Input className="px-1 border-none shadow-none focus-visible:ring-0" placeholder="Search State..." />
-                                </div>
-                            </TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
