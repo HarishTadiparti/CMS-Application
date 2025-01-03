@@ -3,6 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AppSidebar from "@/components/custom/app-sidebar";
 import AppSidebarProvider from "@/components/sidebar-provider";
+import { ThemeProvider } from "@/components/theme-provider";
+import { PageLayoutHeader } from "@/components/custom/page-layout";
+import CustomBreadcrumb from "@/components/custom/custom-breadcrumb";
+import NotificationPopover from "@/components/custom/notification-popover";
+import { ThemeModeToggle } from "@/components/custom/theme-toggle";
+import ProfileDropdown from "@/components/custom/profile-dropdown";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,12 +33,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppSidebarProvider>
           <AppSidebar />
           <main className="relative w-full h-screen overflow-x-hidden">
-            {children}
+              <PageLayoutHeader className="sticky top-0 z-10">
+                <CustomBreadcrumb />
+                <div className="flex items-center">
+                  <NotificationPopover />
+                  <ThemeModeToggle />
+                  <ProfileDropdown className="ml-1" />
+                </div>
+              </PageLayoutHeader>
+              {children}
           </main>
         </AppSidebarProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

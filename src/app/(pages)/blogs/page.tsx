@@ -93,9 +93,6 @@ export default function BlogsPage() {
 
     return (
         <PageLayout>
-            <PageLayoutHeader>
-                <CustomBreadcrumb items={breadcrumbItems} />
-            </PageLayoutHeader>
             <div className="px-4 flex items-center justify-between">
                 <PageLayoutTitle>Blogs</PageLayoutTitle>
                 <Button size='sm' onClick={() => navigate.push('/blogs/create-blog')}><Plus className="w-4 h-4" /> Create Blog</Button>

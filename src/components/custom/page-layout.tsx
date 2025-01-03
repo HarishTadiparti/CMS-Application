@@ -8,7 +8,7 @@ export function PageLayout({ children, className }: { children: React.ReactNode,
 
 export function PageLayoutHeader({ children, className }: { children: React.ReactNode, className?: string }) {
     return (
-        <div className={cn('px-4 h-14 flex items-center justify-between bg-white bg-opacity-5 backdrop-blur-md border-b border-input/40', className)}>{children}</div>
+        <div className={cn('px-4 py-2 flex items-center justify-between bg-white bg-opacity-5 backdrop-blur-md border-b border-input/40', className)}>{children}</div>
     )
 }
 

@@ -34,13 +34,6 @@ export default function CreateNewBlog() {
 
     return (
         <PageLayout>
-            <PageLayoutHeader className="sticky top-0 z-10">
-                <CustomBreadcrumb items={breadcrumbItems} />
-                <div className="flex items-center gap-2">
-                    <Button size='sm' variant='secondary'>Preview</Button>
-                    <Button size='sm'>Publish</Button>
-                </div>
-            </PageLayoutHeader>
             <div>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="mx-auto w-2/3 space-y-4">

@@ -70,9 +70,9 @@ export default function AppSidebar() {
                     ))
                 }
             </SidebarContent>
-            <SidebarFooter>
+            {/* <SidebarFooter>
                 <SidebarUser user={user} />
-            </SidebarFooter>
+            </SidebarFooter> */}
         </Sidebar>
     )
 }
