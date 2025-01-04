@@ -5,6 +5,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupConte
 import { SidebarUser } from "./sidebar-user"
 import { group } from "console"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 const items = [
     {
@@ -40,35 +41,39 @@ const user = {
     email: 'shad.cn@gmail.com'
 }
 export default function AppSidebar() {
+    const [isCollapsed, setIsCollapsed]: any = useState(true)
+
     return (
-        <Sidebar collapsible="icon">
-            <SidebarContent>
-                {
-                    items.map((group) => (
-                        <SidebarGroup key={group.groupLabel}>
-                            <div className="relative group/item flex items-center justify-between hover:bg-secondary rounded-md">
-                                <SidebarGroupLabel>{group.groupLabel}</SidebarGroupLabel>
-                                <Link href="/create-cms">
-                                    <Plus className="mr-2 w-4 h-4 text-transparent group-hover/item:text-sidebar-foreground/60 cursor-pointer" />
-                                </Link>
-                            </div>
-                            <SidebarGroupContent>
-                                <SidebarMenu>
-                                    {group.items.map((item) => (
-                                        <SidebarMenuItem key={item.title}>
-                                            <SidebarMenuButton asChild>
-                                                <a href={item.url}>
-                                                    <item.icon />
-                                                    <span>{item.title}</span>
-                                                </a>
-                                            </SidebarMenuButton>
-                                        </SidebarMenuItem>
-                                    ))}
-                                </SidebarMenu>
-                            </SidebarGroupContent>
-                        </SidebarGroup>
-                    ))
-                }
+        <Sidebar collapsible="icon" stateChange={isCollapsed}  >
+            <SidebarContent >
+                <div className="h-full" onMouseEnter={() => { setIsCollapsed(true) }} onMouseLeave={() => { setIsCollapsed(false) }}>
+                    {
+                        items.map((group) => (
+                            <SidebarGroup key={group.groupLabel}>
+                                <div className="relative group/item flex items-center justify-between hover:bg-secondary rounded-md">
+                                    <SidebarGroupLabel>{group.groupLabel}</SidebarGroupLabel>
+                                    <Link href="/create-cms">
+                                        <Plus className="mr-2 w-4 h-4 text-transparent group-hover/item:text-sidebar-foreground/60 cursor-pointer" />
+                                    </Link>
+                                </div>
+                                <SidebarGroupContent>
+                                    <SidebarMenu >
+                                        {group.items.map((item) => (
+                                            <SidebarMenuItem key={item.title} >
+                                                <SidebarMenuButton asChild className="hover:bg-blue-200">
+                                                    <a href={item.url}>
+                                                        <item.icon />
+                                                        <span>{item.title}</span>
+                                                    </a>
+                                                </SidebarMenuButton>
+                                            </SidebarMenuItem>
+                                        ))}
+                                    </SidebarMenu>
+                                </SidebarGroupContent>
+                            </SidebarGroup>
+                        ))
+                    }
+                </div>
             </SidebarContent>
             {/* <SidebarFooter>
                 <SidebarUser user={user} />
