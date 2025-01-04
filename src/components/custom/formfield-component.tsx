@@ -2,10 +2,12 @@ import { Control, FieldPath, FieldValues } from "react-hook-form";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { emptySpace } from "@/lib/utils";
+import { Label } from "../ui/label";
 
 interface FormFieldsComponentProps {
     name: string,
     label?: string,
+    required?: boolean,
     placeholder?: string,
     type?: string,
     key?: number | string,
@@ -16,7 +18,7 @@ interface FormFieldsComponentProps {
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
-export default function FormFieldComponent({ key, control, name, label, placeholder, type, render, transform, disabled, onBlur }: FormFieldsComponentProps) {
+export default function FormFieldComponent({ key, control, name, label, required = false, placeholder, type, render, transform, disabled, onBlur }: FormFieldsComponentProps) {
     return (
         <FormField
             key={key}
@@ -38,7 +40,7 @@ export default function FormFieldComponent({ key, control, name, label, placehol
                 return (
                     <FormItem>
                         {
-                            label && <FormLabel>{label}</FormLabel>
+                            label && <Label required={required}>{label}</Label>
                         }
                         <FormControl>
                             {

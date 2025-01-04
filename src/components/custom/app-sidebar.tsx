@@ -48,7 +48,7 @@ export default function AppSidebar() {
                         <SidebarGroup key={group.groupLabel}>
                             <div className="relative group/item flex items-center justify-between hover:bg-secondary rounded-md">
                                 <SidebarGroupLabel>{group.groupLabel}</SidebarGroupLabel>
-                                <Link href="/create-cms">
+                                <Link href="/create-cms-collection">
                                     <Plus className="mr-2 w-4 h-4 text-transparent group-hover/item:text-sidebar-foreground/60 cursor-pointer" />
                                 </Link>
                             </div>
