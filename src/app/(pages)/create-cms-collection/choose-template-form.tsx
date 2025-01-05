@@ -52,22 +52,20 @@ export default function ChooseTemplateForm() {
         <div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="mx-auto w-2/4 space-y-4">
-                    <FormFieldComponent name="template" label="Template" control={form.control}
+                    <FormFieldComponent name="template" label="Templates" control={form.control}
                         render={() => (
                             <div>
                                 <div className="px-2.5 py-2 flex flex-wrap items-center gap-x-1 gap-y-1.5 border border-input rounded-md">
                                     {
                                         templates.map((template) => (
-                                            <div className="flex items-center gap-1">
+                                            <div key={template.id} className="flex items-center gap-1">
                                                 {form.getValues('template') && form.getValues('template')?.id === template.id ? <Badge
-                                                    key={template.id}
                                                     variant='default'
                                                     className='font-normal rounded-full cursor-pointer'
                                                 >
                                                     {template.name}
                                                     <X className="ml-1 w-3 h-3" onClick={() => form.reset({ template: undefined })} />
                                                 </Badge> : <Badge
-                                                    key={template.id}
                                                     variant='secondary'
                                                     className='font-normal rounded-full cursor-pointer'
                                                     onClick={() => form.reset({ template: template })}

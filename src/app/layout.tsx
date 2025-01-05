@@ -36,7 +36,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppSidebarProvider>
           <AppSidebar />
-          <main className="relative w-full h-screen overflow-x-hidden">
+            <main className="relative w-full min-h-screen flex flex-col overflow-x-hidden">
               <PageLayoutHeader className="sticky top-0 z-10">
                 <CustomBreadcrumb />
                 <div className="flex items-center">
@@ -45,7 +45,9 @@ export default function RootLayout({
                   <ProfileDropdown className="ml-1" />
                 </div>
               </PageLayoutHeader>
-              {children}
+              <div className="flex-1 w-full h-full overflow-y-auto">
+                {children}
+              </div>
           </main>
         </AppSidebarProvider>
         </ThemeProvider>
