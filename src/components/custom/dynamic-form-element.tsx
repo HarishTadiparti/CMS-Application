@@ -27,13 +27,15 @@ interface DynamicFormElementProps {
     fieldData: FieldDataType,
     control: Control<any>
 }
-export default function DynamicFormElement({ fieldData, control }: DynamicFormElementProps) {
-    const formFields: FormFieldsType = {
-        Input: ({ fieldData, value, onChange }) => <Input placeholder={fieldData.placeholder} value={value} onChange={onChange} />,
-        Textarea: ({ fieldData, value, onChange }) => <Textarea placeholder={fieldData.placeholder} value={value} onChange={onChange} />
-    }
 
+const formFields: FormFieldsType = {
+    Input: ({ fieldData, value, onChange }) => <Input placeholder={fieldData.placeholder} value={value} onChange={onChange} />,
+    Textarea: ({ fieldData, value, onChange }) => <Textarea placeholder={fieldData.placeholder} value={value} onChange={onChange} />
+}
+
+export default function DynamicFormElement({ fieldData, control }: DynamicFormElementProps) {
     const Element = formFields[fieldData.element]
+
     return Element ? (
         <FormField
             control={control}
