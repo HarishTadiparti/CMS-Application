@@ -41,7 +41,7 @@ export default function DynamicFormElement({ fieldData, control }: DynamicFormEl
             control={control}
             name={fieldData.name}
             render={({ field }) => (
-                <FormItem>
+                <FormItem className="space-y-1">
                     <FormLabel>{fieldData.label}</FormLabel>
                     <FormControl>
                         <Element fieldData={fieldData} value={field.value} onChange={field.onChange} />
